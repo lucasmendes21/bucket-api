@@ -1,0 +1,13 @@
+version: "3"
+services:
+  bucket-rest-api:
+    image: bucket-rest-api:${VERSION}
+    env_file: 
+      - build/docker/delivery/api/rest/env.env
+    build:
+      context: .
+      dockerfile: build/docker/delivery/api/rest/Dockerfile
+      args:
+        - SERVER=rest
+    ports:
+      - "8000:8000"
